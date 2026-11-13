@@ -10,7 +10,8 @@
 #   scripts/sync-from-template.sh --check          report drift, write nothing (exit 1 on drift)
 #
 # What is vendored:
-#   template/            the whole template (used by create-workspace to scaffold locally)
+#   template/            the template minus skills/ and scripts/ (those live once, below,
+#                        so the catalogue and the plugin loader see each skill once)
 #   skills/<name>/       every template skill (workspace skills), byte-identical
 #   scripts/<file>       every template script, byte-identical
 set -euo pipefail
@@ -42,7 +43,8 @@ is_owned() { local x="$1"; shift; for o in "$@"; do [[ "$x" == "$o" ]] && return
 
 if (( check_only )); then
   drift=0
-  diff -rq --exclude=.git "$src" template >/dev/null || { echo "drift: template/"; diff -rq --exclude=.git "$src" template || true; drift=1; }
+  X=(--exclude=.git --exclude=skills --exclude=scripts)
+  diff -rq "${X[@]}" "$src" template >/dev/null || { echo "drift: template/"; diff -rq "${X[@]}" "$src" template || true; drift=1; }
   for d in "$src"/skills/*/; do n=$(basename "$d")
     diff -rq "$d" "skills/$n" >/dev/null 2>&1 || { echo "drift: skills/$n"; drift=1; }; done
   for d in skills/*/; do n=$(basename "$d")
@@ -54,7 +56,7 @@ if (( check_only )); then
 fi
 
 rm -rf template && mkdir template
-(cd "$src" && tar --exclude=.git -cf - .) | (cd template && tar -xf -)
+(cd "$src" && tar --exclude=./.git --exclude=./skills --exclude=./scripts -cf - .) | (cd template && tar -xf -)
 for d in skills/*/; do n=$(basename "$d"); is_owned "$n" "${PLUGIN_OWNED_SKILLS[@]}" || rm -rf "skills/$n"; done
 cp -r "$src"/skills/* skills/
 for f in scripts/*; do n=$(basename "$f"); is_owned "$n" "${PLUGIN_OWNED_SCRIPTS[@]}" || rm -f "$f"; done

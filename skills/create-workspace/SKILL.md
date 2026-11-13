@@ -48,15 +48,18 @@ Ask which applies:
 
 ## B. Local folder
 
-Copy the plugin's `template/` folder (two levels up from this skill, `../../template/`)
-to the chosen path, excluding nothing; `git init` there; settle in; commit. Say what is
+Assemble the template at the chosen path from the plugin root (two levels up from this
+skill): copy `template/` (dotfiles included), then the workspace skills into `skills/`
+(every folder in the plugin's `skills/` except `setup` and `create-workspace`), then the
+plugin's `scripts/` into `scripts/` (except `sync-from-template.sh`). `git init` there;
+settle in; commit. Say what is
 lost without a remote (off-machine backup) and that a remote can be added later.
 
 ## C. Adopt an existing repository or folder
 
 1. Survey it: list files; never move or rewrite the user's existing files.
-2. Add the template's structure alongside, copying from `../../template/` only files and
-   folders that do not already exist: `family-overview.md`, `actors/_actor-template.md`,
+2. Add the template's structure alongside, assembled as in route B (`template/`, plus the
+   workspace skills and scripts), copying only files and folders that do not already exist: `family-overview.md`, `actors/_actor-template.md`,
    `sources/README.md`, `vocabulary.md`, `docs/`, `skills/`, `scripts/`, `AGENTS.md`,
    `SUPPORT.md`, `.gitignore` entries (append missing lines). If a file of the same name
    exists, keep theirs and put the template's next to it with a `.template` suffix, and
