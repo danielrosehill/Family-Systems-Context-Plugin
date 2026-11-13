@@ -1,0 +1,9 @@
+# Copied to .family-systems-context by the create-workspace skill. See the plugin's
+# reference/marker-file.md. Its presence marks the workspace root.
+created: YYYY-MM-DD
+subject: "Family system map"
+template: danielrosehill/Family-System-Context-Template
+template_version: 1.0.0
+backing: github          # github | local
+repo: <owner>/<name>     # omit when backing is local
+workspace_root: .

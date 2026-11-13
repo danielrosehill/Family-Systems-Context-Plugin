@@ -1,0 +1,9 @@
+exports/
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.opus
+*.flac
+.qdrant/
+__pycache__/

@@ -1,0 +1,13 @@
+{
+  "name": "family-systems-context",
+  "displayName": "Family Systems Context",
+  "version": "1.0.0",
+  "description": "Map a toxic family system: one file per person, roles grounded in family-systems research, printable relationship diagram, therapy intake pack, aliases for names that hurt, private git repo plus optional vector store.",
+  "author": {
+    "name": "Daniel Rosehill",
+    "url": "https://github.com/danielrosehill"
+  },
+  "repository": "https://github.com/danielrosehill/Family-Systems-Context-Plugin",
+  "license": "MIT",
+  "keywords": ["mental-health", "family-systems", "therapy", "abuse-recovery", "genogram", "context", "voice-notes", "vector-store"]
+}

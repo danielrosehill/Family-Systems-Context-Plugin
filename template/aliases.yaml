@@ -1,0 +1,11 @@
+# Alias key: see docs/aliases.md. Private: this file links aliases to real people.
+# The workspace files always use real names; mappings apply only to what is shown to the
+# user (present_with) or prepared for others (diagram, intake pack, shared copies).
+present_with: real   # set to comfort once aliases exist, if you want the agent to use them
+people: []
+# - slug: mother
+#   names: ["Jane Doe", "Jane", "Mum", "Mother"]
+#   comfort: "the Weather"
+#   share: "Parent A"
+other_identifiers: []
+# - {real: "Springfield", share: "[home town]"}
